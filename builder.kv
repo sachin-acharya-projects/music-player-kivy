@@ -1,0 +1,71 @@
+<Button>
+    size_hint: (None, None)
+    width: (700-70)/3
+    height: 50
+    background_normal: ''
+    background_color: '#222222'
+<MyLayout>
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 30
+        spacing: 10
+        Label:
+            id: screen
+            text: 'Status'
+            size_hint: (1, None)
+            height: 250
+            width: self.texture_size[1]
+            pos_hint: {'x': 0, 'top': 1}
+            font_family: 'sans-serif'
+            font_size: 17
+            halign: "left"
+            valign: 'top'
+            text_size: self.size
+            text_pos_hint: {'x':0 ,'top':0}
+            padding: (10, 10)
+            bold: True
+            canvas.before:
+                Color:
+                    rgba: (51/255, 51/255, 51/255, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        FloatLayout:
+            size: root.width, 100
+            rows: 1
+            cols: 3
+            Button:
+                id:stop
+                text: 'Stop'
+                pos_hint: {'x': 0, 'y': 0}
+                on_press: root.stop()
+            Button:
+                id:generate
+                text: 'Reload List'
+                pos_hint: {'right': 1, 'y': 0}
+                on_press: root.generate()
+            Button:
+                id:close
+                text: 'Close'
+                pos_hint: {'center_x': 0.5, 'y': 0}
+                on_press: root.exit()
+        FloatLayout:
+            size: root.width, 100
+            rows: 1
+            cols: 3
+            Button:
+                id:prev
+                text: 'Previous'
+                pos_hint: {'x': 0, 'y': 0.2}
+                on_press: root.prev()
+            Button:
+                id:play
+                text: 'Play'
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
+                on_press: root.play()
+            Button:
+                id:next
+                text: 'Next'
+                pos_hint: {'right': 1, 'y': 0.2}
+                on_press: root.next()
